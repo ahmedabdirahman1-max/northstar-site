@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmedabdirahman1-max.github.io/northstar-site/sitemap.xml
