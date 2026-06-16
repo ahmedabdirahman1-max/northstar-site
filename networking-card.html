@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed Abdirahman — Networking QR Card (print me)</title>
+<style>
+  :root{
+    --bg:#0b1120; --panel:#111c33; --text:#e8eef9; --muted:#9fb0c9;
+    --line:rgba(159,176,201,.18); --brand:#38bdf8; --brand-2:#22d3a6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:var(--font); background:#1b2436; color:var(--text);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:30px 16px; gap:18px;
+  }
+  .hint{font-size:13px;color:#b9c6dc;max-width:420px;text-align:center;line-height:1.5;}
+  .hint b{color:#fff;}
+
+  /* The card — A6 portrait (105 x 148 mm). Prints one per page, centered. */
+  .card{
+    width:105mm; min-height:148mm; border-radius:18px; padding:11mm 9mm 9mm;
+    background:
+      radial-gradient(420px 280px at 50% -8%, rgba(56,189,248,.20), transparent 62%),
+      radial-gradient(380px 240px at 50% 108%, rgba(34,211,166,.16), transparent 62%),
+      linear-gradient(180deg,#0b1120,#0f172a);
+    border:1px solid var(--line); display:flex; flex-direction:column;
+    align-items:center; text-align:center; box-shadow:0 30px 70px -30px rgba(0,0,0,.7);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);background:var(--panel);padding:5px 12px;border-radius:999px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--brand-2);}
+  .name{font-size:25px;font-weight:900;margin-top:14px;letter-spacing:-.01em;}
+  .role{
+    font-size:13.5px;font-weight:700;margin-top:3px;
+    background:linear-gradient(120deg,var(--brand),var(--brand-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .tag{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;max-width:78mm;}
+
+  .qrwrap{
+    margin:16px 0 12px; padding:14px; background:#fff; border-radius:16px;
+    box-shadow:0 14px 30px -14px rgba(0,0,0,.6);
+  }
+  .qrwrap img{display:block;width:48mm;height:48mm;}
+  .scan{font-size:13px;font-weight:800;color:#fff;}
+  .scan span{color:var(--brand);}
+
+  .links{margin-top:13px;display:flex;flex-direction:column;gap:6px;width:100%;}
+  .row{
+    display:flex;align-items:center;gap:9px;justify-content:flex-start;
+    font-size:11.5px;color:var(--text);background:rgba(22,36,63,.6);
+    border:1px solid var(--line);border-radius:9px;padding:7px 11px;
+  }
+  .row b{font-weight:700;}
+  .row .em{font-size:13px;width:18px;text-align:center;}
+  .foot{margin-top:auto;padding-top:12px;font-size:10px;color:var(--muted);}
+
+  /* Toolbar — hidden when printing */
+  .bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .bar button{
+    font:inherit;font-weight:700;font-size:13px;cursor:pointer;border:none;
+    padding:10px 18px;border-radius:10px;color:#04121f;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  }
+
+  @media print{
+    @page{size:A6 portrait;margin:0;}
+    body{background:#fff;padding:0;gap:0;}
+    .hint,.bar{display:none !important;}
+    .card{
+      width:105mm;height:148mm;border-radius:0;border:none;box-shadow:none;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    }
+  }
+</style>
+</head>
+<body>
+  <p class="hint">
+    <b>Print this card</b> (A6) for the table, or just show it on your phone.
+    The QR opens your scan-card hub — <b>book a call, site, and email</b> in one tap.
+  </p>
+  <div class="bar">
+    <button onclick="window.print()">🖨️ Print this card</button>
+  </div>
+
+  <div class="card">
+    <span class="eyebrow"><span class="dot"></span>Northstar AI Automation</span>
+    <div class="name">Ahmed Abdirahman</div>
+    <div class="role">Ethical AI-Automation Entrepreneur</div>
+    <p class="tag">Honest, done-for-you AI &amp; workflow automation for small businesses. No hype. No lock-in. Real ROI.</p>
+
+    <div class="qrwrap"><img src="qr-creative.svg" alt="Scan to connect with Ahmed" /></div>
+    <div class="scan">📲 Scan to connect — <span>or visit the links below</span></div>
+
+    <div class="links">
+      <div class="row"><span class="em">📅</span><b>Book a call:</b>&nbsp;calendly.com/ahmedabdirahman1/30min</div>
+      <div class="row"><span class="em">🌐</span><b>Site:</b>&nbsp;ahmedabdirahman1-max.github.io/northstar-site</div>
+      <div class="row"><span class="em">✉️</span><b>Email:</b>&nbsp;ahmedabdirahman1@gmail.com</div>
+    </div>
+
+    <div class="foot">Minneapolis–St. Paul · Let's build something honest.</div>
+  </div>
+</body>
+</html>
